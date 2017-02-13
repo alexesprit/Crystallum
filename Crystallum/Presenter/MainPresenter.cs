@@ -23,7 +23,7 @@ namespace Crystallum.Presenter {
             try {
                 var program = generator.generateProgram();
                 view.updateGeneratedProgram(program);
-            } catch {
+            } catch (FormatException) {
                 view.showInvalidDimensionsError();
             }
         }

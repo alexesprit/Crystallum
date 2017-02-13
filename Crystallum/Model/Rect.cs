@@ -13,7 +13,7 @@ namespace Crystallum.Model {
         internal Rect(string dimensions) {
             var sizes = dimensions.Split('x');
             if (sizes.Length != DIMENSIONS_COUNT) {
-                throw new CrystallumError();
+                throw new FormatException();
             }
 
             width = Int32.Parse(sizes[0]);
