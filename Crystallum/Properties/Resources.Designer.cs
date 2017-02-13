@@ -70,11 +70,47 @@ namespace Crystallum.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Circle.
+        /// </summary>
+        internal static string Circle {
+            get {
+                return ResourceManager.GetString("Circle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dimensions (DxH).
+        /// </summary>
+        internal static string CircleDimensions {
+            get {
+                return ResourceManager.GetString("CircleDimensions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please specify valid part dimensions.
         /// </summary>
         internal static string InvalidDimensionsError {
             get {
                 return ResourceManager.GetString("InvalidDimensionsError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rect.
+        /// </summary>
+        internal static string Rect {
+            get {
+                return ResourceManager.GetString("Rect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dimensions (LxBxH).
+        /// </summary>
+        internal static string RectDimensions {
+            get {
+                return ResourceManager.GetString("RectDimensions", resourceCulture);
             }
         }
         

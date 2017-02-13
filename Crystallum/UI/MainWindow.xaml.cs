@@ -50,14 +50,19 @@ namespace Crystallum {
 
         private void UpdateComponents() {
             this.Title = Properties.Resources.AppName;
+
+            rectRadioButton.Content = Properties.Resources.Rect;
+            circleRadioButton.Content = Properties.Resources.Circle;
         }
 
         private void onCircleRadioButtonChecked(object sender, RoutedEventArgs e) {
             presenter.onSelectCircleType();
+            label.Content = Properties.Resources.CircleDimensions;
         }
 
         private void onRectRadioButtonChecked(object sender, RoutedEventArgs e) {
             presenter.onSelectRectType();
+            label.Content = Properties.Resources.RectDimensions;
         }
     }
 }
