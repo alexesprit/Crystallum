@@ -3,11 +3,6 @@ using System.Collections.Generic;
 
 namespace Crystallum.Model {
     public sealed class Generator {
-        private static Dictionary<int, int> FEED_MAP = new Dictionary<int, int>() {
-            { 8, 2200 },
-            { 10, 2000 }
-        };
-
         private static Dictionary<int, int> WIDTH_MAP = new Dictionary<int, int>() {
             { 4300, 1300 },
             { 4700, 1400 },
@@ -19,13 +14,11 @@ namespace Crystallum.Model {
         private const int MAX_SIZE_1 = 1800;
         private const int TAB_SIZE = 20;
 
-        private const int DISCRETENESS = 10;
-
         public string generateProgram(Part part) {
-            var feed = FEED_MAP[part.thickness];
+            var feed = KristallParams.FEED_MAP[part.thickness];
             var replaceMap = new Dictionary<string, int>() {
-                { "${width}",  part.width * DISCRETENESS },
-                { "${height}", part.height * DISCRETENESS },
+                { "${width}",  part.width * KristallParams.DISCRETENESS },
+                { "${height}", part.height * KristallParams.DISCRETENESS },
                 { "${feed}",  feed },
                 { "${feed2}", feed / 2 }
             };
@@ -57,8 +50,8 @@ namespace Crystallum.Model {
             var size2 = part.width - size1 - TAB_SIZE;
 
             var replaceMap = new Dictionary<string, int>() {
-                 { "${size1}", size1 * DISCRETENESS },
-                 { "${size2}", size2 * DISCRETENESS }
+                 { "${size1}", size1 * KristallParams.DISCRETENESS },
+                 { "${size2}", size2 * KristallParams.DISCRETENESS }
              };
 
             return Formatter.formatTemplate(MEDIUM_PART_TEMPLATE, replaceMap);
@@ -80,8 +73,8 @@ namespace Crystallum.Model {
             var size2 = part.width - size1 * 2 - TAB_SIZE * 2;
 
             var replaceMap = new Dictionary<string, int>() {
-                 { "${size1}", size1 * DISCRETENESS },
-                 { "${size2}", size2 * DISCRETENESS }
+                 { "${size1}", size1 * KristallParams.DISCRETENESS },
+                 { "${size2}", size2 * KristallParams.DISCRETENESS }
              };
 
             return Formatter.formatTemplate(LONG_PART_TEMPLATE, replaceMap);
