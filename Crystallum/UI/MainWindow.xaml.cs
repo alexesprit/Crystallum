@@ -2,17 +2,16 @@
 using System.Windows;
 
 using Crystallum.View;
-using Crystallum.Properties;
 
 namespace Crystallum {
     public partial class MainWindow : Window, MainView {
         private Presenter.MainPresenter presenter;
 
         public MainWindow() {
+            presenter = new Presenter.MainPresenter(this);
+
             InitializeComponent();
             UpdateComponents();
-
-            presenter = new Presenter.MainPresenter(this);
         }
 
         public string getProgram() {
@@ -51,6 +50,14 @@ namespace Crystallum {
 
         private void UpdateComponents() {
             this.Title = Properties.Resources.AppName;
+        }
+
+        private void onCircleRadioButtonChecked(object sender, RoutedEventArgs e) {
+            presenter.onSelectCircleType();
+        }
+
+        private void onRectRadioButtonChecked(object sender, RoutedEventArgs e) {
+            presenter.onSelectRectType();
         }
     }
 }

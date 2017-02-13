@@ -1,6 +1,5 @@
 ﻿using System.IO;
 
-using Crystallum.Error;
 using Crystallum.Model;
 using Crystallum.View;
 using System;
@@ -9,27 +8,22 @@ namespace Crystallum.Presenter {
     public sealed class MainPresenter {
         private MainView view;
 
-        private Generator generator;
-        private Part part;
+        private GeneratorFactory generator;
 
         public MainPresenter(MainView view) {
             this.view = view;
-            generator = new Generator();
+            generator = new GeneratorFactory();
         }
 
         public void onDimensionsUpdate(string dimensionsStr) {
-            part = null;
-            try {
-                part = Part.createFromString(dimensionsStr);
-            } catch (CrystallumError) {
-            }            
+            generator.Dimensions = dimensionsStr;
         }
 
         public void onGenerateButtonClicked() {
-            if (part != null) {
-                var program = generator.generateProgram(part);
+            try {
+                var program = generator.generateProgram();
                 view.updateGeneratedProgram(program);
-            } else {
+            } catch {
                 view.showInvalidDimensionsError();
             }
         }
@@ -39,6 +33,14 @@ namespace Crystallum.Presenter {
             if (!String.IsNullOrEmpty(pathToSave)) {
                 File.WriteAllText(pathToSave, view.getProgram());
             }
+        }
+
+        public void onSelectRectType() {
+            generator.Type = GeneratorFactory.TYPE.RECT;
+        }
+
+        public void onSelectCircleType() {
+            generator.Type = GeneratorFactory.TYPE.CIRCLE;
         }
     }
 }

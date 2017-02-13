@@ -56,7 +56,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Error\CrystallumError.cs" />
-    <Compile Include="Model\Part.cs" />
+    <Compile Include="Model\Circle.cs" />
+    <Compile Include="Model\CircleGenerator.cs" />
+    <Compile Include="Model\GeneratorFactory.cs" />
+    <Compile Include="Model\Rect.cs" />
+    <Compile Include="Model\RectGenerator.cs" />
     <Compile Include="Util\Formatter.cs" />
     <Compile Include="Util\KristallParams.cs" />
     <Compile Include="View\MainView.cs" />
@@ -74,7 +78,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Generator.cs" />
     <Compile Include="Presenter\MainPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

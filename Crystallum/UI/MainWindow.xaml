@@ -9,8 +9,10 @@
     <Grid Margin="0">
         <Button x:Name="generateProgramButton" Content="Generate" HorizontalAlignment="Left" Margin="10,323,0,0" VerticalAlignment="Top" Width="102" Click="onGenerateProgramButtonClick" Height="28"/>
         <Button x:Name="saveButton" Content="Save" HorizontalAlignment="Left" Margin="117,323,0,0" VerticalAlignment="Top" Width="102" Height="28" Click="onSaveButtonClick"/>
-        <TextBox x:Name="programTextBox" HorizontalAlignment="Left" Height="254" Margin="10,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="209"/>
-        <TextBox x:Name="dimensionsTextBox" HorizontalAlignment="Left" Height="21" Margin="10,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="209"/>
-        <Label x:Name="label" Content="Dimensions" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" VerticalAlignment="Top" Width="209"/>
+        <TextBox x:Name="programTextBox" HorizontalAlignment="Left" Height="219" Margin="10,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="209"/>
+        <TextBox x:Name="dimensionsTextBox" HorizontalAlignment="Left" Height="21" Margin="10,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="209"/>
+        <Label x:Name="label" Content="Dimensions" HorizontalAlignment="Left" Height="23" Margin="10,45,0,0" VerticalAlignment="Top" Width="209"/>
+        <RadioButton x:Name="rectRadioButton" Content="RadioButton" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" IsChecked="True" Checked="onRectRadioButtonChecked"/>
+        <RadioButton x:Name="circleRadioButton" Content="RadioButton" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Checked="onCircleRadioButtonChecked"/>
     </Grid>
 </Window>

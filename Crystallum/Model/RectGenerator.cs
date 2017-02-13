@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace Crystallum.Model {
-    public sealed class Generator {
+    internal sealed class RectGenerator {
         private static Dictionary<int, int> WIDTH_MAP = new Dictionary<int, int>() {
             { 4300, 1300 },
             { 4700, 1400 },
@@ -14,7 +14,7 @@ namespace Crystallum.Model {
         private const int MAX_SIZE_1 = 1800;
         private const int TAB_SIZE = 20;
 
-        public string generateProgram(Part part) {
+        internal string generateProgram(Rect part) {
             var feed = KristallParams.FEED_MAP[part.thickness];
             var replaceMap = new Dictionary<string, int>() {
                 { "${width}",  part.width * KristallParams.DISCRETENESS },
@@ -27,7 +27,7 @@ namespace Crystallum.Model {
             return Formatter.formatTemplate(template, replaceMap);
         }
 
-        public static string getTemplate(Part part) {
+        private static string getTemplate(Rect part) {
             string template;
 
             if (part.width <= 2500) {
@@ -45,7 +45,7 @@ namespace Crystallum.Model {
             return SHORT_PART_TEMPLATE;
         }
 
-        private static string getMediumTemplate(Part part) {
+        private static string getMediumTemplate(Rect part) {
             var size1 = (part.width - TAB_SIZE) / 2;
             var size2 = part.width - size1 - TAB_SIZE;
 
@@ -57,7 +57,7 @@ namespace Crystallum.Model {
             return Formatter.formatTemplate(MEDIUM_PART_TEMPLATE, replaceMap);
         }
 
-        private static string getLongTemplate(Part part) {
+        private static string getLongTemplate(Rect part) {
             var size1 = 0;
             foreach(var item in WIDTH_MAP) {
                 var maxWidth = item.Key;
