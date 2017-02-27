@@ -1,5 +1,5 @@
-﻿using Crystallum.Util;
-using System;
+﻿using Crystallum.Error;
+using Crystallum.Util;
 using System.Collections.Generic;
 
 namespace Crystallum.Model {
@@ -8,6 +8,10 @@ namespace Crystallum.Model {
         private const int RADIUS = 15;
 
         internal string generateProgram(Circle part) {
+            if (!KristallParams.isSupported(part.thickness)) {
+                throw new InvalidThicknessException();
+            }
+
             double radius = part.diameter / 2;
 
             double ax = PADDING;
@@ -25,7 +29,7 @@ namespace Crystallum.Model {
             int CX = (int)(radius * KristallParams.DISCRETENESS);
             int CY = 0;
 
-            var feed = KristallParams.FEED_MAP[part.thickness];
+            var feed = KristallParams.getFeed(part.thickness);
 
             var replaceMap = new Dictionary<string, int>() {
                 { "{AX}", AX }, { "{AY}", AY },

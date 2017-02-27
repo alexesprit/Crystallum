@@ -3,7 +3,9 @@
         string getProgram();
 
         string showSaveProgramDialog();
+
         void showInvalidDimensionsError();
+        void showInvalidThicknessError();
 
         void updateGeneratedProgram(string program);
     }

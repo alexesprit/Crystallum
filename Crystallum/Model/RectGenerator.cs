@@ -1,4 +1,5 @@
-﻿using Crystallum.Util;
+﻿using Crystallum.Error;
+using Crystallum.Util;
 using System.Collections.Generic;
 
 namespace Crystallum.Model {
@@ -15,7 +16,11 @@ namespace Crystallum.Model {
         private const int TAB_SIZE = 20;
 
         internal string generateProgram(Rect part) {
-            var feed = KristallParams.FEED_MAP[part.thickness];
+            if (!KristallParams.isSupported(part.thickness)) {
+                throw new InvalidThicknessException();
+            }
+
+            var feed = KristallParams.getFeed(part.thickness);
             var replaceMap = new Dictionary<string, int>() {
                 { "${width}",  part.width * KristallParams.DISCRETENESS },
                 { "${height}", part.height * KristallParams.DISCRETENESS },

@@ -28,11 +28,11 @@ namespace Crystallum {
         }
 
         public void showInvalidDimensionsError() {
-            MessageBox.Show(
-                Properties.Resources.InvalidDimensionsError,
-                Properties.Resources.AppName,
-                MessageBoxButton.OK
-            );
+            showError(Properties.Resources.InvalidDimensionsError);
+        }
+
+        public void showInvalidThicknessError() {
+            showError("Invalid thickness");
         }
 
         public void updateGeneratedProgram(string program) {
@@ -53,6 +53,10 @@ namespace Crystallum {
 
             rectRadioButton.Content = Properties.Resources.Rect;
             circleRadioButton.Content = Properties.Resources.Circle;
+        }
+
+        private void showError(string message) {
+            MessageBox.Show(message, Properties.Resources.AppName, MessageBoxButton.OK);
         }
 
         private void onCircleRadioButtonChecked(object sender, RoutedEventArgs e) {

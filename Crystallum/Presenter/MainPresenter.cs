@@ -3,6 +3,7 @@
 using Crystallum.Model;
 using Crystallum.View;
 using System;
+using Crystallum.Error;
 
 namespace Crystallum.Presenter {
     public sealed class MainPresenter {
@@ -25,6 +26,8 @@ namespace Crystallum.Presenter {
                 view.updateGeneratedProgram(program);
             } catch (FormatException) {
                 view.showInvalidDimensionsError();
+            } catch (InvalidThicknessException) {
+                view.showInvalidThicknessError();
             }
         }
 

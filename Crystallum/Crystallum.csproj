@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Error\CrystallumError.cs" />
+    <Compile Include="Error\InvalidThicknessException.cs" />
     <Compile Include="Model\Circle.cs" />
     <Compile Include="Model\CircleGenerator.cs" />
     <Compile Include="Model\GeneratorFactory.cs" />
