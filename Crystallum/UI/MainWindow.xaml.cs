@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System.Windows;
+using System.Windows.Input;
 
 using Crystallum.View;
 
@@ -67,6 +68,13 @@ namespace Crystallum {
         private void onRectRadioButtonChecked(object sender, RoutedEventArgs e) {
             presenter.onSelectRectType();
             label.Content = Properties.Resources.RectDimensions;
+        }
+
+        private void OnDimensionsTextBoxKeyDown(object sender, KeyEventArgs e) {
+            if (e.Key == Key.Return) {
+                presenter.onDimensionsUpdate(dimensionsTextBox.Text);
+                presenter.onGenerateButtonClicked();
+            }
         }
     }
 }

@@ -10,7 +10,7 @@
         <Button x:Name="generateProgramButton" Content="Generate" Margin="10,0,127,10" Click="onGenerateProgramButtonClick" Height="28" VerticalAlignment="Bottom"/>
         <Button x:Name="saveButton" Content="Save" Margin="127,0,10,10" Click="onSaveButtonClick" Height="28" VerticalAlignment="Bottom"/>
         <TextBox x:Name="programTextBox" Margin="10,102,10,43" TextWrapping="Wrap"/>
-        <TextBox x:Name="dimensionsTextBox" Height="21" Margin="10,76,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="dimensionsTextBox" Height="21" Margin="10,76,10,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="OnDimensionsTextBoxKeyDown"/>
         <Label x:Name="label" Content="Dimensions" HorizontalAlignment="Left" Height="26" Margin="10,45,0,0" VerticalAlignment="Top" Width="209"/>
         <RadioButton x:Name="rectRadioButton" Content="RadioButton" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" IsChecked="True" Checked="onRectRadioButtonChecked"/>
         <RadioButton x:Name="circleRadioButton" Content="RadioButton" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Checked="onCircleRadioButtonChecked"/>
