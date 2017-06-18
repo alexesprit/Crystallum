@@ -63,6 +63,7 @@
     <Compile Include="Model\Rect.cs" />
     <Compile Include="Model\RectGenerator.cs" />
     <Compile Include="Util\Formatter.cs" />
+    <Compile Include="Util\Helpers.cs" />
     <Compile Include="Util\KristallParams.cs" />
     <Compile Include="View\MainView.cs" />
     <Page Include="UI\MainWindow.xaml">

@@ -1,5 +1,4 @@
-﻿using Crystallum.Error;
-using System;
+﻿using System;
 
 namespace Crystallum.Model {
     internal class Circle {
@@ -9,13 +8,13 @@ namespace Crystallum.Model {
         internal int thickness;
 
         internal Circle(string dimensions) {
-            var sizes = dimensions.Split('x');
+            var sizes = Util.Helpers.ExtractNumbers(dimensions);
             if (sizes.Length != DIMENSIONS_COUNT) {
                 throw new FormatException();
             }
 
-            diameter = Int32.Parse(sizes[0]);
-            thickness = Int32.Parse(sizes[1]);
+            diameter = sizes[0];
+            thickness = sizes[1];
         }
     }
 }
