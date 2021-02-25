@@ -3,16 +3,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Crystallum"
-        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Crystallum.MainWindow"
+        x:Class="Crystallum.MainWindow"
         mc:Ignorable="d" Height="430" Width="265" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Margin="0">
-        <Button x:Name="generateProgramButton" Content="Generate" Margin="10,0,127,10" Click="onGenerateProgramButtonClick" Height="28" VerticalAlignment="Bottom"/>
-        <Button x:Name="saveButton" Content="Save" Margin="127,0,10,10" Click="onSaveButtonClick" Height="28" VerticalAlignment="Bottom"/>
-        <TextBox x:Name="programTextBox" Margin="10,102,10,43" TextWrapping="Wrap"/>
-        <TextBox x:Name="dimensionsTextBox" Height="21" Margin="10,76,10,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="OnDimensionsTextBoxKeyDown"/>
-        <Label x:Name="label" Content="Dimensions" HorizontalAlignment="Left" Height="26" Margin="10,45,0,0" VerticalAlignment="Top" Width="209"/>
-        <RadioButton x:Name="rectRadioButton" Content="RadioButton" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" IsChecked="True" Checked="onRectRadioButtonChecked"/>
-        <RadioButton x:Name="circleRadioButton" Content="RadioButton" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Checked="onCircleRadioButtonChecked"/>
+        <Button x:Name="generateProgramButton" Content="Generate" Margin="10,0,127,10" Click="OnGenerateProgramButtonClick" Height="28" VerticalAlignment="Bottom"/>
+        <Button x:Name="saveButton" Content="Save" Margin="127,0,10,10" Click="OnSaveButtonClick" Height="28" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="programTextBox" Margin="10,108,10,43" TextWrapping="Wrap"/>
+        <TextBox x:Name="dimensionsTextBox" Height="21" Margin="10,82,10,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="OnDimensionsTextBoxKeyDown"/>
+        <Label x:Name="label" Content="Dimensions" HorizontalAlignment="Left" Height="26" Margin="10,56,0,0" VerticalAlignment="Top" Width="209"/>
+        <Grid Margin="10,10,164,345">
+            <RadioButton x:Name="rectRadioButton" Content="RadioButton" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="True" Checked="OnRectRadioButtonChecked"/>
+            <RadioButton x:Name="circleRadioButton" Content="RadioButton" HorizontalAlignment="Left" Margin="0,20,0,0" VerticalAlignment="Top" Checked="OnCircleRadioButtonChecked"/>
+        </Grid>
+        <Grid Margin="134,10,40,345">
+            <RadioButton x:Name="newRadioButton" Content="RadioButton" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="True" Checked="OnNewRadioButtonChecked"/>
+            <RadioButton x:Name="oldRadioButton" Content="RadioButton" HorizontalAlignment="Left" Margin="0,20,0,0" VerticalAlignment="Top" Checked="OnOldRadioButtonChecked"/>
+        </Grid>
     </Grid>
 </Window>

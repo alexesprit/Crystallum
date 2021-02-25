@@ -3,75 +3,105 @@ using System.Windows;
 using System.Windows.Input;
 
 using Crystallum.View;
+using Crystallum.Presenter;
 
-namespace Crystallum {
-    public partial class MainWindow : Window, MainView {
-        private Presenter.MainPresenter presenter;
+namespace Crystallum
+{
+    public partial class MainWindow : Window, MainView
+    {
+        private readonly MainPresenter presenter;
 
-        public MainWindow() {
-            presenter = new Presenter.MainPresenter(this);
+        public MainWindow()
+        {
+            presenter = new MainPresenter(this);
 
             InitializeComponent();
             UpdateComponents();
         }
 
-        public string getProgram() {
+        public string GetProgram()
+        {
             return programTextBox.Text;
         }
 
-        public string showSaveProgramDialog() {
-            SaveFileDialog dialog = new SaveFileDialog();
-            dialog.Filter = "ISO G code|*.iso";
-            dialog.Title = Properties.Resources.SaveGeneratedProgram;
+        public string ShowSaveProgramDialog()
+        {
+            SaveFileDialog dialog = new SaveFileDialog
+            {
+                Filter = "ISO G code|*.iso",
+                Title = Properties.Resources.SaveGeneratedProgram
+            };
             dialog.ShowDialog();
 
             return dialog.FileName;
         }
 
-        public void showInvalidDimensionsError() {
-            showError(Properties.Resources.InvalidDimensionsError);
+        public void ShowInvalidDimensionsError()
+        {
+            ShowError(Properties.Resources.InvalidDimensionsError);
         }
 
-        public void showInvalidThicknessError() {
-            showError("Invalid thickness");
+        public void ShowInvalidThicknessError()
+        {
+            ShowError("Invalid thickness");
         }
 
-        public void updateGeneratedProgram(string program) {
+        public void UpdateGeneratedProgram(string program)
+        {
             programTextBox.Text = program;
         }
 
-        private void onGenerateProgramButtonClick(object sender, RoutedEventArgs e) {
+        private void OnGenerateProgramButtonClick(object sender, RoutedEventArgs e)
+        {
             presenter.onDimensionsUpdate(dimensionsTextBox.Text);
             presenter.onGenerateButtonClicked();
         }
 
-        private void onSaveButtonClick(object sender, RoutedEventArgs e) {
-            presenter.onSaveButtonClicked(); 
+        private void OnSaveButtonClick(object sender, RoutedEventArgs e)
+        {
+            presenter.onSaveButtonClicked();
         }
 
-        private void UpdateComponents() {
+        private void UpdateComponents()
+        {
             this.Title = Properties.Resources.AppName;
 
             rectRadioButton.Content = Properties.Resources.Rect;
             circleRadioButton.Content = Properties.Resources.Circle;
         }
 
-        private void showError(string message) {
+        private void ShowError(string message)
+        {
             MessageBox.Show(message, Properties.Resources.AppName, MessageBoxButton.OK);
         }
 
-        private void onCircleRadioButtonChecked(object sender, RoutedEventArgs e) {
+        private void OnCircleRadioButtonChecked(object sender, RoutedEventArgs e)
+        {
             presenter.onSelectCircleType();
             label.Content = Properties.Resources.CircleDimensions;
         }
 
-        private void onRectRadioButtonChecked(object sender, RoutedEventArgs e) {
+        private void OnRectRadioButtonChecked(object sender, RoutedEventArgs e)
+        {
             presenter.onSelectRectType();
             label.Content = Properties.Resources.RectDimensions;
         }
 
-        private void OnDimensionsTextBoxKeyDown(object sender, KeyEventArgs e) {
-            if (e.Key == Key.Return) {
+
+        private void OnNewRadioButtonChecked(object sender, RoutedEventArgs e)
+        {
+            presenter.OnSelectNewMachine();
+        }
+
+        private void OnOldRadioButtonChecked(object sender, RoutedEventArgs e)
+        {
+            presenter.OnSelectOldMachine();
+        }
+
+        private void OnDimensionsTextBoxKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
                 presenter.onDimensionsUpdate(dimensionsTextBox.Text);
                 presenter.onGenerateButtonClicked();
             }

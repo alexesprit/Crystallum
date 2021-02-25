@@ -1,15 +1,19 @@
 ﻿using System;
 
-namespace Crystallum.Model {
-    internal class Circle {
+namespace Crystallum.Model.Shape
+{
+    internal class Circle
+    {
         private const int DIMENSIONS_COUNT = 2;
 
         internal int diameter;
         internal int thickness;
 
-        internal Circle(string dimensions) {
+        internal Circle(string dimensions)
+        {
             var sizes = Util.Helpers.ExtractNumbers(dimensions);
-            if (sizes.Length != DIMENSIONS_COUNT) {
+            if (sizes.Length != DIMENSIONS_COUNT)
+            {
                 throw new FormatException();
             }
 

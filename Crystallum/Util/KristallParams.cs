@@ -4,7 +4,7 @@ namespace Crystallum.Util {
     public sealed class KristallParams {
         public const int DISCRETENESS = 10;
 
-        private static Dictionary<int, int> feedMap = new Dictionary<int, int>() {
+        private static readonly Dictionary<int, int> feedMap = new Dictionary<int, int>() {
             { 3, 2400 },
             { 4, 2200 },
             { 6, 2200 },
@@ -18,12 +18,17 @@ namespace Crystallum.Util {
             { 30, 675 }
         };
 
-        public static int getFeed(int thickness) {
+        public static int GetFeed(int thickness) {
             return feedMap[thickness];
         }
 
-        public static bool isSupported(int thickness) {
+        public static bool IsThicknessSupported(int thickness) {
             return feedMap.ContainsKey(thickness);
+        }
+
+        public static int Convert(double n)
+        {
+            return (int)(n * DISCRETENESS);
         }
     }
 }

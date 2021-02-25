@@ -1,12 +1,12 @@
 ﻿namespace Crystallum.View {
     public interface MainView {
-        string getProgram();
+        string GetProgram();
 
-        string showSaveProgramDialog();
+        string ShowSaveProgramDialog();
 
-        void showInvalidDimensionsError();
-        void showInvalidThicknessError();
+        void ShowInvalidDimensionsError();
+        void ShowInvalidThicknessError();
 
-        void updateGeneratedProgram(string program);
+        void UpdateGeneratedProgram(string program);
     }
 }

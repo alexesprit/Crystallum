@@ -5,45 +5,68 @@ using Crystallum.View;
 using System;
 using Crystallum.Error;
 
-namespace Crystallum.Presenter {
-    public sealed class MainPresenter {
-        private MainView view;
+namespace Crystallum.Presenter
+{
+    public sealed class MainPresenter
+    {
+        private readonly MainView view;
+        private readonly GeneratorFactory generator;
 
-        private GeneratorFactory generator;
-
-        public MainPresenter(MainView view) {
+        public MainPresenter(MainView view)
+        {
             this.view = view;
             generator = new GeneratorFactory();
         }
 
-        public void onDimensionsUpdate(string dimensionsStr) {
+        public void onDimensionsUpdate(string dimensionsStr)
+        {
             generator.Dimensions = dimensionsStr;
         }
 
-        public void onGenerateButtonClicked() {
-            try {
-                var program = generator.generateProgram();
-                view.updateGeneratedProgram(program);
-            } catch (FormatException) {
-                view.showInvalidDimensionsError();
-            } catch (InvalidThicknessException) {
-                view.showInvalidThicknessError();
+        public void onGenerateButtonClicked()
+        {
+            try
+            {
+                var program = generator.GenerateProgram();
+                view.UpdateGeneratedProgram(program);
+            }
+            catch (FormatException)
+            {
+                view.ShowInvalidDimensionsError();
+            }
+            catch (InvalidThicknessException)
+            {
+                view.ShowInvalidThicknessError();
             }
         }
 
-        public void onSaveButtonClicked() {
-            var pathToSave = view.showSaveProgramDialog();
-            if (!String.IsNullOrEmpty(pathToSave)) {
-                File.WriteAllText(pathToSave, view.getProgram());
+        public void onSaveButtonClicked()
+        {
+            var pathToSave = view.ShowSaveProgramDialog();
+            if (!string.IsNullOrEmpty(pathToSave))
+            {
+                File.WriteAllText(pathToSave, view.GetProgram());
             }
         }
 
-        public void onSelectRectType() {
-            generator.Type = GeneratorFactory.TYPE.RECT;
+        public void onSelectRectType()
+        {
+            generator.ShapeType = GeneratorFactory.Shape.RECT;
         }
 
-        public void onSelectCircleType() {
-            generator.Type = GeneratorFactory.TYPE.CIRCLE;
+        public void onSelectCircleType()
+        {
+            generator.ShapeType = GeneratorFactory.Shape.CIRCLE;
+        }
+
+        public void OnSelectNewMachine()
+        {
+            generator.MachineType = GeneratorFactory.Machine.NEW;
+        }
+
+        public void OnSelectOldMachine()
+        {
+            generator.MachineType = GeneratorFactory.Machine.OLD;
         }
     }
 }
